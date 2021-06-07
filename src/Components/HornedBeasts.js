@@ -22,6 +22,7 @@ class Main extends React.Component {
         <p>{this.props.desc}</p>
         <p>❤️ {this.state.numberOfClicks}</p>
       </div>
+
     );
   }
 }
