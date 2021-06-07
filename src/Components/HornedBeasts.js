@@ -1,13 +1,26 @@
 import React from 'react';
 
 class Main extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      numberOfClicks:0
+    };
+  }
+  handleClick=()=>{
+    let numOfClicks=this.state.numberOfClicks;
+    this.setState({
+      numberOfClicks:numOfClicks+1,
+    });
+  }
   render() {
+    // console.log(this.props);
     return (
       <div>
-        <h2>UniWhal</h2>
-
-        <img src='http://3.bp.blogspot.com/_DBYF1AdFaHw/TE-f0cDQ24I/AAAAAAAACZg/l-FdTZ6M7z8/s1600/Unicorn_and_Narwhal_by_dinglehopper.jpg' alt='UniWhal' />
-        <p>A unicorn and a narwhal nuzzling their horns</p>
+        <h2>{this.props.title}</h2>
+        <img style={{width: '300px'}} src={this.props.url} alt='UniWhal' onClick={this.handleClick} />
+        <p>{this.props.desc}</p>
+        <p>❤️ {this.state.numberOfClicks}</p>
       </div>
     );
   }
