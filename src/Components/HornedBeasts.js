@@ -1,30 +1,36 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
 
 class Main extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      numberOfClicks:0
+    this.state = {
+      numberOfClicks: 0
     };
   }
-  handleClick=()=>{
-    let numOfClicks=this.state.numberOfClicks;
+  handleClick = () => {
+    let numOfClicks = this.state.numberOfClicks;
     this.setState({
-      numberOfClicks:numOfClicks+1,
+      numberOfClicks: numOfClicks + 1,
     });
+    this.props.showFunc(this.props);
   }
   render() {
-    // console.log(this.props);
     return (
-      <div>
-        <h2>{this.props.title}</h2>
-        <img style={{width: '300px'}} src={this.props.url} alt='UniWhal' onClick={this.handleClick} />
-        <p>{this.props.desc}</p>
-        <p>❤️ {this.state.numberOfClicks}</p>
-      </div>
+      <Card style={{ width: '18rem', display: 'inline-block' }} >
+        <Card.Img variant="top" src={this.props.url} alt={this.props.title} onClick={this.handleClick} />
+        <Card.Body>
+          <Card.Title>{this.props.title}</Card.Title>
+          <Card.Text>
+            {this.props.desc}
+          </Card.Text>
+          <Card.Text>
+            ❤️ {this.state.numberOfClicks}
+          </Card.Text>
+        </Card.Body>
+      </Card>
 
     );
   }
-  
 }
 export default Main;
