@@ -13,13 +13,28 @@ class Main extends React.Component {
       <div>
         {
           this.state.passedData.map((value, idx) => {
-            return (<HornedBeasts
-              showFunc={this.props.showFunc}
-              key={idx}
-              title={value.title}
-              url={value.image_url}
-              desc={value.description}
-            />);
+            // console.log(Number(this.props.numOfHorns));
+            // console.log(value.horns);
+            if (Number(this.props.numOfHorns) === value.horns) {
+              return (<HornedBeasts
+                showFunc={this.props.showFunc}
+                key={idx}
+                title={value.title}
+                url={value.image_url}
+                desc={value.description}
+              />);
+            }
+            else if(Number(this.props.numOfHorns==='0')){
+              return (<HornedBeasts
+                showFunc={this.props.showFunc}
+                key={idx}
+                title={value.title}
+                url={value.image_url}
+                desc={value.description}
+              />);
+            }
+            return '';
+
           })
         }
       </div>
