@@ -5,6 +5,8 @@ import Footer from './Components/Footer';
 import JsonData from './assets/data.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SelectedBeast from './Components/SelectedBeast';
+import FilterForm from './Components/FilterForm';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +14,8 @@ class App extends React.Component {
     this.state = {
       jsonData: JsonData,
       show: false,
-      element: {}
+      element: {},
+      filterValue: '0'
     };
   }
 
@@ -28,14 +31,19 @@ class App extends React.Component {
       show: false
     });
   }
-
+  setFilterValue = (value) => {
+    this.setState({
+      filterValue: value
+    });
+  }
   render() {
     // console.log(this.state.element);
     return (
       <div>
         <Header />
+        <FilterForm setFilterFunc={this.setFilterValue} />
         {this.state.show && <SelectedBeast handleShow={this.state.show} hideFunc={this.hide} theBeast={this.state.element} />}
-        <Main data={this.state.jsonData} showFunc={this.show} />
+        <Main data={this.state.jsonData} showFunc={this.show} numOfHorns={this.state.filterValue} />
         <Footer />
       </div>
     );
