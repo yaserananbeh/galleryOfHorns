@@ -1,5 +1,6 @@
 import React from 'react';
 import HornedBeasts from './HornedBeasts';
+import Container from 'react-bootstrap/Container';
 
 class Main extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Main extends React.Component {
   }
   render() {
     return (
-      <div>
+      <Container style={{textAlign:'center'}}>
         {
           this.state.passedData.map((value, idx) => {
             // console.log(Number(this.props.numOfHorns));
@@ -37,7 +38,7 @@ class Main extends React.Component {
 
           })
         }
-      </div>
+      </Container>
     );
   }
 }
